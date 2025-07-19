@@ -20,7 +20,7 @@ public class IntegerSet {
     private void CheckRep(){
         if (Numbers == null) 
             throw new RuntimeException("Numbers is null");
-        if (Numbers.size() > 1){  // have more then 2
+        if (Numbers.size() > 1){  // have more than 1
             for (int i = 0; i < Numbers.size() - 1; i++) {
                 if(Numbers.get(i) >= Numbers.get(i+1))
                     throw new RuntimeException("error sort");
@@ -28,8 +28,8 @@ public class IntegerSet {
         }
     }
     /** 
-     *  เพื่มตัวเลข
-     *  @param x คือค่าที่ต้องการเพิ่มเข้าไป
+     *  add numbers
+     *  @param x is value to add
      */
     public void add(Integer x){ 
         if (!Numbers.contains(x) && Numbers != null && x != null) {
@@ -37,16 +37,16 @@ public class IntegerSet {
                 Numbers.add(x);
             }else {
                 for (int i = 0; i < Numbers.size(); i++) {
-                    if(x < Numbers.get(0)) {  // add หน้า
+                    if(x < Numbers.get(0)) {  // add in front
                         Numbers.add(0,x);
                         break;
                     }
-                    if(i == Numbers.size() - 1){  // add หลัง
+                    if(i == Numbers.size() - 1){  // add in back
                         Numbers.add(x);
                         break;
                     }
-                    if(Numbers.get(i) < x && x < Numbers.get(i+1)) {  // add ตรงกลาง
-                        Numbers.add(i+1,x); // เป็น 1+i เพราะเอาไปต่อหลัง i
+                    if(Numbers.get(i) < x && x < Numbers.get(i+1)) {  // add in middle
+                        Numbers.add(i+1,x); // It's i + 1 because we need to move to the next value after i
                         break;
                     }
 
@@ -55,8 +55,6 @@ public class IntegerSet {
         }
         CheckRep();
     }
-
-    
     public String toString(){
         return Numbers.toString();
     }
